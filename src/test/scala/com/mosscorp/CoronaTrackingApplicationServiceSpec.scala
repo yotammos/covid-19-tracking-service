@@ -1,6 +1,6 @@
 package com.mosscorp
 
-import com.mosscorp.models.US
+import com.mosscorp.models.UnitedStates
 import io.finch.Input
 import org.scalatest.{FlatSpec, Matchers}
 
@@ -12,7 +12,7 @@ class CoronaTrackingApplicationServiceSpec extends FlatSpec with Matchers {
   behavior of "the counts endpoint"
 
   it should "get counts for country" in {
-    counts(Input.get("/counts/US")).awaitValueUnsafe().get.name shouldBe US.toName
+    counts(Input.get("/counts/US")).awaitValueUnsafe().get.name shouldBe UnitedStates.toName
   }
 
   behavior of "the all counts endpoint"

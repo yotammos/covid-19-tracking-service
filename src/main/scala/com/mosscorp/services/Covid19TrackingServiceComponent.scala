@@ -16,8 +16,9 @@ trait Covid19TrackingServiceComponent {
 
     private val firstPossibleDate: LocalDate = LocalDate.of(2020, Month.FEBRUARY, 2)
 
-    def getAllStats: Array[CountryData] = {
-      val all = getCountryDataByDate().groupBy(_.name)
+    def getAllCountryData: Array[CountryData] = {
+      val all = getCountryDataByDate()
+        .groupBy(_.name)
         .values
         .map(
           countryData => countryData
@@ -41,7 +42,7 @@ trait Covid19TrackingServiceComponent {
     def getCompleteCountryInfo(country: Country, relevantDate: LocalDate = getLastRelevantDate): CountryData = {
       val data = getCountryDataByDate(relevantDate)
       data
-        .filter(_.name == country.toName)
+        .filter(countryData => country.getNames.contains(countryData.name))
         .foldLeft(CountryData(country.toName, Covid19Data(0, 0, 0, data.head.data.date)))(_ + _)
     }
 

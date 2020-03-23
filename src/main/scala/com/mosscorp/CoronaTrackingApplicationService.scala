@@ -31,7 +31,7 @@ object CoronaTrackingApplicationService extends TwitterServer {
   }
 
   def allCounts: Endpoint[Array[CountryData]] = get("counts" :: "all") {
-    Future.value(context.covid19TrackingService.getAllStats) map Ok
+    Future.value(context.covid19TrackingService.getAllCountryData) map Ok
   }
 
   def countryTimeData: Endpoint[CountryTimeData] = get("time" :: path[String]) {
