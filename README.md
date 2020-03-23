@@ -1,1 +1,1 @@
-# covid-19-tracking-service
+# COVID-19 Tracking Service
